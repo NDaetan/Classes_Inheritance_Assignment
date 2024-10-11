@@ -6,15 +6,37 @@ using System.Threading.Tasks;
 
 namespace Classes_Inheritance_Assignment
 {
-    internal class Vacumn
+    internal class Vacuum : Appliance
     {
         //Fields
-        string _batteryVoltage;
-        string _grade;
+        private string _batteryVoltage;
+        private string _batterygrade;
 
 
         //Properties
+        public string BatteryVolatage
+        {
+            get
+            {
+                return _batteryVoltage;
 
+            }
+            set
+            {
+                _batteryVoltage = value;
+            }
+        }
+        public string BatteryGrade
+        {
+            get
+            {
+                return _batterygrade;
+            }
+            set
+            {
+                _batterygrade = value;
+            }
+        }
 
 
         //Methods
@@ -25,10 +47,11 @@ namespace Classes_Inheritance_Assignment
 
         public override string ToString()
         {
-
+           Console.WriteLine("Vacuum");
+            return base.ToString();
         }
 
-        public void Vacuum()
+        public void Vacuums()
         {
 
         }

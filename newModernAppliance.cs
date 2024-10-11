@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Classes_Inheritance_Assignment
 {
-    internal class newModernAppliance    //only Methods in this class according to diagram
+    internal class newModernAppliance : ModernAppliance //only Methods in this class according to diagram. This Inherits mordernappliance
     {
 
 

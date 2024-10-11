@@ -12,10 +12,11 @@ namespace Classes_Inheritance_Assignment
         //Fields
         string _random;
 
-        public void Compare();
+        public void Compare()
         {
-             Console.WriteLine("Hello");
+             Console.WriteLine("Compare");
         }
+
     }
 }
 

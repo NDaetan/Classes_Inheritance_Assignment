@@ -8,10 +8,23 @@ namespace Classes_Inheritance_Assignment
 {
     internal class ModernAppliance
     {
-        string applicances;
-        string applicances_T; // Cant see on class diagram
+        string _applicance;
+        string _applicance_T; // Cant see on class diagram
 
         //properties
+
+        public string Appliances
+        {
+            get
+            {
+                return _applicance;
+
+            }
+            set
+            {
+                _applicance = value;
+            }
+        }
 
 
         //Methods

@@ -6,31 +6,61 @@ using System.Threading.Tasks;
 
 namespace Classes_Inheritance_Assignment
 {
-    internal class Refrigerator
+    internal class Refrigerator : Appliance
     {
         //Fields
-        string _doors;
-        string _height;
-        string _width;
+        private enum _doors
+        {
+            two = 2,
+            three = 3,
+            four = 4
+
+        }
+        private int _height;
+        private int _width;
 
         //Properties
+
+        public int Height
+        {
+            get
+            {
+                return _height;
+            }
+            set
+            {
+                _height = value;
+            }
+        }
+        public int Width
+        {
+            get
+            {
+                return _width;
+            }
+            set
+            {
+                _width = value;
+            }
+        }
 
 
         //Methods
 
-        public string FormatForFile()
+        public void FormatForFile()
         {
 
         }
 
-        public void Refrigerator()
+        public void Refrigerators()
         {
 
         }
 
         public override string ToString()
         {
-           
+           Console.WriteLine("Refrigerator: " + Brand + ":" + Color + " " + ItemNumber + " " + Price + " " + Quantity + " " + Wattage + " " + Height + " " + Width);
+            return base.ToString();
         }
 
 

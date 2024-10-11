@@ -6,17 +6,41 @@ using System.Threading.Tasks;
 
 namespace Classes_Inheritance_Assignment
 {
-    internal class Dishwasher
+    internal class Dishwasher :Appliance
     {   
         //Fields
-        string _feature;
-        string _soundRating;
-        string _soundRatingM;
-        string _soundRatingQA; // I cant see what these are on the Class Diagram
-        string _soundRatingQB;
-        string _soundRatingQC;
+        private string _feature;
+        private string _soundRating;
+        private string _soundRatingM;
+        private string _soundRatingQA; // I cant see what these are on the Class Diagram
+        private string _soundRatingQB;
+        private string _soundRatingQC;
 
         //properties
+        public string Feature
+        {
+            get
+            {
+                return _feature;
+            }
+            set
+            {
+                _feature = value;
+            }
+        } 
+        public string SoundRating
+        {
+            get
+            {
+                return _soundRating;
+            }
+            set
+            {
+                _soundRating = value;
+            }
+        }
+        //Property for other sound ratings
+
 
         //Methods
         public void Dishwashers()
@@ -29,7 +53,8 @@ namespace Classes_Inheritance_Assignment
         }
         public override string ToString()
         {
-            
+            Console.WriteLine("Dishwasher");
+            return base.ToString();
         }
     }
 }
