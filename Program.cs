@@ -1,22 +1,64 @@
 ﻿using System;
 
-namespace Appliance_program
-{ 
-    public class Program //Should Only contain our main method.
+namespace Classes_Inheritance_Assignment
+{
+    internal class Program
     {
-        public static void Main(string[] args)
+        /// <summary>
+        /// Entry point to program
+        /// </summary>
+        /// <param name="args">Command line arguments</param>
+        static void Main(string[] args)
         {
+            ModernAppliances modernAppliances = new MyModernAppliances();
+            ModernAppliances.Options option = ModernAppliances.Options.None;
 
+            while (option != ModernAppliances.Options.SaveExit)
+            {
+                modernAppliances.DisplayMenu();
+
+                option = Enum.Parse<ModernAppliances.Options>(Console.ReadLine());
+
+                switch (option)
+                {
+                    case ModernAppliances.Options.Checkout:
+                        {
+                            modernAppliances.Checkout();
+
+                            break;
+                        }
+                    case ModernAppliances.Options.Find:
+                        {
+                            modernAppliances.Find();
+
+                            break;
+                        }
+                    case ModernAppliances.Options.DisplayType:
+                        {
+                            modernAppliances.DisplayType();
+
+                            break;
+                        }
+
+                    case ModernAppliances.Options.RandomList:
+                        {
+                            modernAppliances.RandomList();
+                            break;
+                        }
+                    case ModernAppliances.Options.SaveExit:
+                        {
+                            modernAppliances.Save();
+                            break;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("Invalid option entered. Please try again.");
+                            break;
+                        }
+                }
+            }
         }
     }
 }
 
 
-// TODO: Try to write class/Method to look at here and then write details next to the method on what needs to be done.
-// We will use this program class as a ToDo list as well as leave extra notes to each other if we dont put it in teams.
-//
-// Aug10: Just made layout of all classes properites and methods according to class diagram in D2L. Feel Free to change whatever is need to make work.
-//
-//
-//
-//
