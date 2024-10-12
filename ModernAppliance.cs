@@ -14,7 +14,7 @@ namespace Classes_Inheritance_Assignment
         /// <summary>
         /// Location of appliances.txt file
         /// </summary>
-        public const string APPLIANCES_TEXT_FILE = "appliances.txt";
+        public const string APPLIANCES_TEXT_FILE = "C:\\C# Projects\\Classes_Inheritance_Assignment\\appliances.txt";
 
         /// <summary>
         /// Options user can choose

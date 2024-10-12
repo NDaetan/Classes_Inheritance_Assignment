@@ -13,19 +13,33 @@ namespace Classes_Inheritance_Assignment                           // This is th
         public override void Checkout()
         {
             // Write "Enter the item number of an appliance: "
+            Console.WriteLine("Enter the item number of an appliance: ");
 
             // Create long variable to hold item number
+            long userItemNumber;
 
             // Get user input as string and assign to variable.
+            string input = Console.ReadLine();
             // Convert user input from string to long and store as item number variable.
-
+            if (long.TryParse(input, out userItemNumber))
+            {
+                return;
+            }
             // Create 'foundAppliance' variable to hold appliance with item number
             // Assign null to foundAppliance (foundAppliance may need to be set as nullable)
-
+            Appliance? foundAppliance = null;
             // Loop through Appliances
             // Test appliance item number equals entered item number
             // Assign appliance in list to foundAppliance variable
-
+            foreach (var appliance in Appliances)
+            {
+                if (appliance.ItemNumber == userItemNumber)
+                {
+                    foundAppliance = appliance;
+                    break;
+                }
+            }
+;
             // Break out of loop (since we found what need to)
 
             // Test appliance was not found (foundAppliance is null)
@@ -38,27 +52,52 @@ namespace Classes_Inheritance_Assignment                           // This is th
             // Write "Appliance has been checked out."
             // Otherwise (appliance isn't available)
             // Write "The appliance is not available to be checked out."
-        }
+            if (foundAppliance != null)
+            {
+                Console.WriteLine("No appliances with that item number.");
 
+            }
+            else
+            {
+                if (foundAppliance.IsAvailable)
+                {
+                    foundAppliance.Checkout();
+                    Console.WriteLine("Appliance has been checked out.");
+                }
+                else
+                {
+                    Console.WriteLine("The appliance is not available to be checked out.");
+                }
+            }
+        }
         /// <summary>
         /// Option 2: Finds appliances
         /// </summary>
         public override void Find()
         {
             // Write "Enter brand to search for:"
+            Console.WriteLine("Enter brand to search for: ");
 
             // Create string variable to hold entered brand
             // Get user input as string and assign to variable.
-
+            string userBrand = Console.ReadLine();
             // Create list to hold found Appliance objects
+            List<Appliance> foundAppliances = new List<Appliance>();
 
             // Iterate through loaded appliances
             // Test current appliance brand matches what user entered
             // Add current appliance in list to found list
+            foreach (var appliance in Appliances)
+            {
+                if (true)
+                {
+                    foundAppliances.Add(appliance);
+                }
+            }
 
 
             // Display found appliances
-            // DisplayAppliancesFromList(found, 0);
+            DisplayAppliancesFromList(foundAppliances, 0);
         }
 
         /// <summary>
@@ -67,32 +106,52 @@ namespace Classes_Inheritance_Assignment                           // This is th
         public override void DisplayRefrigerators()
         {
             // Write "Possible options:"
-
-            // Write "0 - Any"
-            // Write "2 - Double doors"
-            // Write "3 - Three doors"
-            // Write "4 - Four doors"
+            Console.WriteLine("Possible options:");
+            Console.WriteLine("0 - Any");// Write "0 - Any"
+            Console.WriteLine("2 - Double Doors");// Write "2 - Double doors"
+            Console.WriteLine("3 - Three Doors");// Write "3 - Three doors"
+            Console.WriteLine("4 - Four Doors");// Write "4 - Four doors"
 
             // Write "Enter number of doors: "
+            Console.WriteLine("Enter number of doors; ");
 
             // Create variable to hold entered number of doors
+            string userDoors;
 
             // Get user input as string and assign to variable
+            userDoors = Console.ReadLine();
 
             // Convert user input from string to int and store as number of doors variable.
+            int numberOfDoors;
+            if (int.TryParse(userDoors, out numberOfDoors))
+            {
+                Console.WriteLine("Invalid Input");
+                return;
+            }
 
             // Create list to hold found Appliance objects
+            List<Appliance> foundAppliances = new List<Appliance>();
 
             // Iterate/loop through Appliances
+            foreach (var appliance in Appliances)
+            {
+                if (appliance is Refrigerator refrigerator)
+                {
+                    if (numberOfDoors == 0 || refrigerator.Doors == numberOfDoors) // || is an or statement
+                    {
+                        foundAppliances.Add(refrigerator);
+                    }
+                }
+            }
             // Test that current appliance is a refrigerator
             // Down cast Appliance to Refrigerator
-            // Refrigerator refrigerator = (Refrigerator) appliance;
+            //Refrigerator refrigerator = (Refrigerator) appliance;
 
             // Test user entered 0 or refrigerator doors equals what user entered.
             // Add current appliance in list to found list
 
             // Display found appliances
-            // DisplayAppliancesFromList(found, 0);
+            DisplayAppliancesFromList(foundAppliances, 0);
         }
 
         /// <summary>
@@ -103,17 +162,22 @@ namespace Classes_Inheritance_Assignment                           // This is th
         public override void DisplayVacuums()
         {
             // Write "Possible options:"
+            Console.WriteLine("Possible Options: ");
 
-            // Write "0 - Any"
-            // Write "1 - Residential"
-            // Write "2 - Commercial"
+            Console.WriteLine("0 - Any"); // Write "0 - Any"
+            Console.WriteLine("1 - Residential"); // Write "1 - Residential"
+            Console.WriteLine("2 - Commercial"); // Write "2 - Commercial"
 
             // Write "Enter grade:"
+            Console.WriteLine("Enter Grade: ");
 
             // Get user input as string and assign to variable
+            string userGrade;
+            userGrade = Console.ReadLine();
 
             // Create grade variable to hold grade to find (Any, Residential, or Commercial)
-
+            string grade;
+            
             // Test input is "0"
             // Assign "Any" to grade
             // Test input is "1"
@@ -123,19 +187,55 @@ namespace Classes_Inheritance_Assignment                           // This is th
             // Otherwise (input is something else)
             // Write "Invalid option."
 
+
+            switch (userGrade)
+            {
+                case "0":
+                    grade = "Any";
+                    break;
+                case "1":
+                    grade = "Residental";
+                    break;
+                case "2":
+                    grade = "Commercial";
+                        break;
+                default:
+                    Console.WriteLine("Invalid Option");
+                    return;
+            }                                         
             // Return to calling (previous) method
             // return;
 
             // Write "Possible options:"
+            Console.WriteLine("Possible Options: ");
 
-            // Write "0 - Any"
-            // Write "1 - 18 Volt"
-            // Write "2 - 24 Volt"
+            Console.WriteLine("0 - Any"); // Write "0 - Any"
+            Console.WriteLine("1 - 18 Volt"); // Write "1 - 18 Volt"
+            Console.WriteLine("2 - 24 Volt");// Write "2 - 24 Volt"
 
-            // Write "Enter voltage:"
+            Console.WriteLine("Enter Voltage: ");// Write "Enter voltage:"
 
             // Get user input as string
+            string userVoltage;
+            userVoltage = Console.ReadLine();
             // Create variable to hold voltage
+            string volts;
+
+            switch (userVoltage)
+            {
+                case "0":
+                    volts = "Any";
+                    break;
+                case "1":
+                    volts = "18";
+                    break;
+                case "2":
+                    volts = "24";
+                    break;
+                default:
+                    Console.WriteLine("Invalid input");
+                    return;
+            }
 
             // Test input is "0"
             // Assign 0 to voltage
@@ -149,8 +249,19 @@ namespace Classes_Inheritance_Assignment                           // This is th
             // return;
 
             // Create found variable to hold list of found appliances.
+            List<Vacuum> foundVacuums = new List<Vacuum>();
 
-            // Loop through Appliances
+            
+            foreach (var appliance in Appliances)// Loop through Appliances
+            {
+                if (appliance is Vacuum vacuum)
+                {
+                    if ((grade == "Any" || vacuum.Grade == grade) && (userVoltage == "0" || vacuum.BatteryVoltage == (short)volts))
+                    {
+                        foundVacuums.Add(vacuum);
+                    }
+                }
+            }
             // Check if current appliance is vacuum
             // Down cast current Appliance to Vacuum object
             // Vacuum vacuum = (Vacuum)appliance;
@@ -159,7 +270,7 @@ namespace Classes_Inheritance_Assignment                           // This is th
             // Add current appliance in list to found list
 
             // Display found appliances
-            // DisplayAppliancesFromList(found, 0);
+            DisplayAppliancesFromList(foundVacuums, 0);
         }
 
         /// <summary>
@@ -255,22 +366,29 @@ namespace Classes_Inheritance_Assignment                           // This is th
         public override void RandomList()
         {
             // Write "Appliance Types"
+            Console.WriteLine("Appliance Types");
 
-            // Write "0 - Any"
-            // Write "1 – Refrigerators"
-            // Write "2 – Vacuums"
-            // Write "3 – Microwaves"
-            // Write "4 – Dishwashers"
 
-            // Write "Enter type of appliance:"
+            Console.WriteLine("0 - Any");// Write "0 - Any"
+            Console.WriteLine("1 - Refrigerators");// Write "1 – Refrigerators"
+            Console.WriteLine("2 - Vacuums");// Write "2 – Vacuums"
+            Console.WriteLine("3 - Microwaves");// Write "3 – Microwaves"
+            Console.WriteLine("4 - Dishwashers");// Write "4 – Dishwashers"
+
+            Console.WriteLine("Enter type of appliance: ");// Write "Enter type of appliance:"
 
             // Get user input as string and assign to appliance type variable
+            Appliance userAppliance;
 
-            // Write "Enter number of appliances: "
+            Console.WriteLine("Enter number of appliances: ");// Write "Enter number of appliances: "
 
-            // Get user input as string and assign to variable
-
+            string userNumAppliances;// Get user input as string and assign to variable
+            userNumAppliances = Console.ReadLine();
             // Convert user input from string to int
+            if (int.TryParse(userNumAppliances))
+            {
+
+            }
 
             // Create variable to hold list of found appliances
 
