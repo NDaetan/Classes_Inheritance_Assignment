@@ -542,7 +542,15 @@ namespace Classes_Inheritance_Assignment                           // This is th
 
 
             // Display found appliances (up to max. number inputted)
-            DisplayAppliancesFromList(foundappliances, numAppliances);
+            if (foundappliances.Count == 0)
+            {
+                Console.WriteLine("No Appliances");
+            }
+            else
+            {
+                DisplayAppliancesFromList(foundappliances, 0);
+            }
+
 
         }
     }
