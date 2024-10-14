@@ -2,7 +2,7 @@
 
 namespace Classes_Inheritance_Assignment.Helpers
 {
-    internal class RandomCompare
+    internal class RandomCompare : IComparer<Appliance>
     {
         private readonly Random _random = new Random();
 
@@ -19,7 +19,7 @@ namespace Classes_Inheritance_Assignment.Helpers
                 return 0;
             }
 
-            return _random.Next(-1, 1);
+            return _random.Next(-1, 2);
         }
 
     }
